@@ -1,5 +1,25 @@
 /*Product.html*/
 /*navbar*/
+html{
+    scroll-behavior: smooth;
+}
+#button{
+    height:50px;
+    width:350px;
+    display: flex;
+}
+#menButton, #kidsButton{
+    height: 100%;
+    width:100%;
+    font-size: 20px;
+    margin: 10px;
+    background-color: rgba(185, 206, 169);
+}
+#menButton:hover, #kidsButton:hover{
+    background-color: rgba(185,206,169,0.3);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
 #navbar {
     height:80px;
     /* background-color:#22333B; */

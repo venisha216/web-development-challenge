@@ -17,6 +17,10 @@
             <a href="#" id="lastAnchor">Login</a>
         </div>
     </header>
+    <div id="button">
+        <button id="menButton">Men's section</button>
+        <button id="kidsButton">Kid's section</button>
+    </div>
     <!---->
     <!-- women section-->
     <!---->
@@ -207,7 +211,23 @@
             </div>
         </div>
     </section>
+    <div></div>
 
+    <!--Scroll-->
+    <script>
+        const menButton = document.getElementById('menButton');
+        const kidsButton = document.getElementById('kidsButton');
+        const goTopButton = document.getElementById('goTopButton');
+    
+        menButton.addEventListener('click', () => {
+            document.getElementById('men').scrollIntoView({ behavior: 'smooth' });
+        });
+    
+        kidsButton.addEventListener('click', () => {
+            document.getElementById('kids').scrollIntoView({ behavior: 'smooth' });
+        });
+
+    </script>
 
     <!--code for dynamically fetching data-->
     <script>
@@ -236,7 +256,7 @@
                 populateProducts('kc', 'kids');
             })
             .catch(error => console.error('Error fetching products:', error));
-    </script>
+    </script> 
     
 </body>
 </html>
