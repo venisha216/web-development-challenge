@@ -1,0 +1,231 @@
+#navbar {
+    height:80px;
+    /* background-color:#22333B; */
+    background-color: #3F4739;
+    color: white; 
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap: nowrap;
+}
+
+#logo {
+    height:80px;
+    width:95px;
+}
+#navbar a{
+    color: white; 
+    font-size: 25px;
+    text-decoration: none;
+    padding-top: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#navbar a:hover {
+    text-decoration:underline;
+}
+
+#lastAnchor{
+    margin-right: 50px;
+}
+@media (max-width:700px){
+    #navbar a{
+        font-size: 15px;
+    }
+    #lastAnchor{
+        margin-right: 30px;
+    }
+}
+.kids-product{
+    height:100vh;
+    width: 97.6vw;
+    margin-top: 30px;
+    display: flex;
+}
+.kids-product-pic{
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 500px;
+    margin-left: 30px;   
+}
+#kids-product1-pic{
+    background-image: url("box4.jpg");
+    
+}
+#kids-product2-pic{
+    background-image: url("box6.jpg");
+    
+}
+#kids-product3-pic{
+    background-image: url("kc3p3.jpg");
+    width:200px;
+}
+#kids-product4-pic{
+    background-image: url("kc4p4.jpg");
+    width: 200px;
+}
+#kids-product5-pic{
+    background-image: url("kc5p5.jpg");
+}
+#kids-product6-pic{
+    background-image: url("kc6p6.jpg");
+}
+#kids-product7-pic{
+    background-image: url("kc7p7.jpg");
+   width: 200px;
+}
+#kids-product8-pic{
+    background-image: url("kc8p8.jpg");
+}
+.kids-product-content{
+    height:70%;
+    width:50%;
+    display: inline-block;
+    margin-left: 100px;
+    margin-right: 0px;
+}
+
+#kids-product1-content,#kids-product2-content,#kids-product6-content{
+    margin-left: 10px;
+}
+
+#name{
+    font-size: 30px;
+}
+
+#desc{
+    font-size: 25px;
+}
+
+#rating{
+    height:28px;
+    width:50px;
+    padding: 3px;
+    font-size: 28px;
+    display: flex;
+}
+#price{
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+.colors{
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+.colorchoice{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: rgb(24, 23, 23);
+    margin: 5px;
+}
+#p1c1{
+    background-color: #98FF98;
+}
+#p1c2{
+    background-color: #ADD8E6;
+}
+#p1c3{
+    background-color: #FFB6C1;
+}
+#p2c1{
+    background-color: #333333;
+}
+#p2c2{
+    background-color:#1E3A78;
+}
+
+
+#p3c1{
+    background-color: #FFDB58;
+}
+#p3c2{
+    background-color:#87CEFA ;
+}
+#p3c3{
+    background-color:#FFDAB9;
+}
+#p4c1{
+    background-color:#ff4d00;
+}
+#p4c2{
+    background-color: #008080;
+}
+#p4c3{
+    background-color: #C71585;
+}
+#p5c1{
+    background-color:#333333;
+}
+#p5c2{
+    background-color: #228B22;
+}
+#p5c3{
+    background-color:#4682B4;
+}
+#p7c1{
+    background-color: #FFD1DC;
+}
+#p7c2{
+    background-color:#A2CFFE;
+}
+#p7c3{
+    background-color:#98FF98;
+}
+#sizes{
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+#size1,#size2,#size3,#size4,#size5{
+    height: 50px;
+    width:100px;
+    border: 2px solid rgba(0, 19, 37, 0.16) ;
+    border-radius: 20%;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 5px;
+    margin: 5px;
+}
+#addtocart{
+    font-size: 25px;
+    height:60px;
+    width:200px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: rgb(97, 113, 85);
+
+}
+
+#addtocart:hover{
+    background-color:rgba(185,206,169,0.3) ;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1000px) {
+    .kids-product {
+        flex-direction: column; 
+        align-items: center; 
+        padding: 0 10px; 
+    }
+
+    .kids-product-pic,
+    .kids-product-content {
+        width: 70%; 
+        text-align: left;
+        box-sizing: border-box;
+        font-size: 15px; 
+    }
+    #size1,#size2,#size3{
+        font-size: 15px;
+        height: 40px;
+    }
+    .kids-product-pic {
+        margin-bottom: 20px;
+        width: 70%; 
+        height: 300px; 
+        background-size: contain;
+        background-position: center; /
+    }
+}

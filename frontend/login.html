@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div id="login-block">
+        <p id="block-heading">Login</p>
+        <div id="user-email" class="blockdiv" contenteditable="true" data-placeholder="Enter your email"></div>
+        <div id="user-password" class="blockdiv" contenteditable="true" data-placeholder="Enter your password"></div>   
+        <button id="login-button">Login</button>
+    </div>
+    <script>
+        const placeholders = {
+            "user-email": "Enter your email",
+            "user-password": "Enter your password"
+        };
+
+        Object.keys(placeholders).forEach(id => {
+            const div = document.getElementById(id);
+            const placeholderText = placeholders[id];
+            const placeholder = document.createElement('span');
+            placeholder.className = 'placeholder';
+            placeholder.innerText = placeholderText;
+
+            div.appendChild(placeholder);
+
+            // Focus event to remove placeholder
+            div.addEventListener('focus', () => {
+                placeholder.style.display = 'none'; // Hide placeholder on focus
+            });
+
+            // Blur event to show placeholder if empty
+            div.addEventListener('blur', () => {
+                if (div.innerText.trim() === '') {
+                    placeholder.style.display = 'block'; // Show placeholder if empty
+                }
+            });
+
+            // Hide placeholder while typing
+            div.addEventListener('input', () => {
+                if (div.innerText.trim() !== '') {
+                    placeholder.style.display = 'none'; // Hide placeholder when typing
+                } else {
+                    placeholder.style.display = 'block'; // Show placeholder when text is cleared
+                }
+            });
+
+            // Show placeholder initially if the div is empty
+            if (div.innerText.trim() === '') {
+                placeholder.style.display = 'block'; // Show placeholder on load if empty
+            }
+        });
+
+        document.getElementById("login-button").addEventListener("click", async function() {
+            const email = document.getElementById("user-email").innerText;const password = document.getElementById("user-password").innerText;
+            const data = { email, password };
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+               });
+
+        // Check if the response is ok
+        if (!response.ok) {
+            const errorText = await response.text(); // Read the response text
+            console.error('Error response:', errorText); // Log the error
+            // alert("Login failed");
+            return; // Exit if the response is not ok
+        }
+
+        const result = await response.json(); 
+        if(result.success){
+            // const userId = result.userId;
+            alert("Redirecting to home page");
+            console.log("Login response: ",result);
+            localStorage.setItem("userId",result.userId);
+            // alert("Redirecting to home page");
+            window.location.href='http://localhost:5000/index.html';
+        }else{
+            // console.error('Login failed: ',result.message);
+            alert('Login failed: ' + result.message); 
+             
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+    }
+});
+
+    </script>
+</body>
+
+</html>

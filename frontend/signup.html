@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+    <body>
+        <!--main code-->
+        <div id="signup-block">
+            <p id="block-heading">Sign Up</p>
+            <div id="user-name" class="blockdiv" contenteditable="true" data-placeholder="Enter your username"></div>
+            <div id="user-email" class="blockdiv" contenteditable="true" data-placeholder="Enter your email"></div>
+            <div id="user-password" class="blockdiv" contenteditable="true" data-placeholder="Enter your password"></div>   
+            <button id="signup-button">Sign Up</button>
+            <p id="login-page-link">Already have an account? <a href="login.html">Login</a></p>
+            <p id="message"></p> <!-- For displaying success or error messages -->
+        </div>
+    
+        <!--javascript-->
+        <script>
+            const placeholders = {
+                "user-name": "Enter your username",
+                "user-email": "Enter your email",
+                "user-password": "Enter your password"
+            };
+    
+            Object.keys(placeholders).forEach(id => {
+                const div = document.getElementById(id);
+                const placeholderText = placeholders[id];
+                const placeholder = document.createElement('span');
+                placeholder.className = 'placeholder';
+                placeholder.innerText = placeholderText;
+    
+                div.appendChild(placeholder);
+    
+                // Focus event to remove placeholder
+                div.addEventListener('focus', () => {
+                    placeholder.style.display = 'none'; // Hide placeholder on focus
+                });
+    
+                // Blur event to show placeholder if empty
+                div.addEventListener('blur', () => {
+                    if (div.innerText.trim() === '') {
+                        placeholder.style.display = 'block'; // Show placeholder if empty
+                    }
+                });
+    
+                // Hide placeholder while typing
+                div.addEventListener('input', () => {
+                    if (div.innerText.trim() !== '') {
+                        placeholder.style.display = 'none'; // Hide placeholder when typing
+                    } else {
+                        placeholder.style.display = 'block'; // Show placeholder if text is cleared
+                    }
+                });
+    
+                // Show placeholder initially if the div is empty
+                if (div.innerText.trim() === '') {
+                    placeholder.style.display = 'block'; // Show placeholder on load if empty
+                }
+            });
+    
+            document.getElementById("signup-button").addEventListener("click", async function() {
+                const username = document.getElementById("user-name").innerText.trim();
+                const email = document.getElementById("user-email").innerText.trim();
+                const password = document.getElementById("user-password").innerText.trim();
+    
+                // Log the values or send them to your backend
+                console.log("Username:", username);
+                console.log("Email:", email);
+                console.log("Password:", password);
+    
+                // Send data to the server
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+    
+                // Handle the server response
+                if (response.ok) {
+                    const message = await response.text(); // Get the response message
+                    console.log(message); // Log the success message
+                    alert(message); // Alert the user with a success message
+                } else {
+                    console.error('Error:', response.statusText); // Log any errors
+                }
+            });
+        </script>
+    </body>
+    
+</html>

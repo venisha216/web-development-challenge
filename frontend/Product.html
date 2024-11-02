@@ -6,12 +6,13 @@
     <title>Product</title>
     <link rel="stylesheet" href="style_product.css"> <!-- Link to your CSS file if needed -->
     <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="html" href = "women_product1.html">
 </head>
 <body>
     <header>
         <div id="navbar">
             <div><img src="logo.jpg" id="logo"></div>
-            <a href="#">Home</a>
+            <a href="index.html">Home</a>
             <a href="Product.html" target="_blank">Products</a>
             <a href="#">Cart</a>
             <a href="#" id="lastAnchor">Login</a>
@@ -257,6 +258,59 @@
             })
             .catch(error => console.error('Error fetching products:', error));
     </script> 
+
+    <!--click on each item-->
     
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const productPages = {
+                wc1: "women_product1.html",
+                wc2: "women_product2.html",
+                wc3: "women_product3.html",
+                wc4: "women_product4.html",
+                wc5: "women_product5.html",
+                wc6: "women_product6.html",
+                wc7: "women_product7.html",
+                wc8: "women_product8.html",
+                mc1: "men_product1.html",
+                mc2: "men_product2.html",
+                mc3: "men_product3.html",
+                mc4: "men_product4.html",
+                mc5: "men_product5.html",
+                mc6: "men_product6.html",
+                mc7: "men_product7.html",
+                mc8: "men_product8.html",
+                kc1: "kids_product1.html",
+                kc2: "kids_product2.html",
+                kc3: "kids_product3.html",
+                kc4: "kids_product4.html",
+                kc5: "kids_product5.html",
+                kc6: "kids_product6.html",
+                kc7: "kids_product7.html",
+                kc8: "kids_product8.html"
+            };
+    
+            // Select all elements with the class 'wc'
+            const productDivs = document.querySelectorAll(".wc, .mc, .kc");
+    
+            // Attach click event listener to each product div
+            productDivs.forEach(div => {
+                div.addEventListener("click", function() {
+                    const productId = div.id;
+                    console.log("Clicked:", productId);  // Log the clicked div ID
+    
+                    if (productPages[productId]) {
+                        console.log("Opening in new tab:", productPages[productId]);  // Log the navigation URL
+                        window.open(productPages[productId], '_blank'); // Open in a new tab
+                    } else {
+                        console.log("No page found for this product ID.");
+                    }
+                });
+            });
+        });
+    </script>
+    
+
+
 </body>
 </html>
